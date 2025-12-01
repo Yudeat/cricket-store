@@ -20,12 +20,10 @@
   --shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* Reset */
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
 body{line-height:1.6;}
 
-/* Navigation */
 .nav-bar {
   display: flex;
   justify-content: space-between;
@@ -83,10 +81,8 @@ body{line-height:1.6;}
   width: 100%;
 }
 
-/* Container */
 .container{max-width:var(--maxw);margin:0 auto;padding:20px;}
 
-/* Site Header with Hero */
 .site-header{
   margin-bottom:80px;
   position:relative;
@@ -222,12 +218,10 @@ body{line-height:1.6;}
   <nav class="nav-bar">
     <div class="logo-text">Khelshala</div>
     <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">History</a></li>
-      <li><a href="#">Achievements</a></li>
-      <li><a href="#">Records</a></li>
-      <li><a href="#">Store</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="/FTD.html">Home</a></li>
+      <li><a href="/history.html">History</a></li>
+      <li><a href="/store.html">Store</a></li>
+      <li><a href="/contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
@@ -252,6 +246,222 @@ body{line-height:1.6;}
   <img id="modalImg" src="" alt="Preview image">
   <p id="modalCaption" class="modal-caption"></p>
 </div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col about">
+            <div class="logo-text">Khelshala</div>
+            <p>Chronicling the triumphs and records that define Nepali Cricket's legacy and its vibrant future.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="Twitter">TW</a>
+                <a href="#" aria-label="Instagram">IG</a>
+            </div>
+        </div>
+
+        <div class="footer-col links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/FTD.html">Home</a></li>
+                <li><a href="/history.html">History</a></li>
+                <li><a href="/store.html">Store</a></li>
+                <li><a href="/contact.html">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col contact">
+            <h3>Stay Updated</h3>
+            <p>Get the latest news and updates directly in your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="contact-detail">Email: info@khelshala.com</p>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2024 Khelshala. All rights reserved. | Powered by the passion of Nepali Cricket.</p>
+    </div>
+</footer>
+
+<style>
+.site-footer {
+    background-color: #1f2937; 
+    color: #f0f4f8;
+    padding: 60px 0 0;
+    font-size: 14px;
+    border-top: 5px solid var(--accent); 
+}
+
+.footer-container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 40px;
+}
+
+.footer-col h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: var(--accent); 
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 40px;
+    background-color: var(--accent);
+}
+
+.footer-col.about .logo-text {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--card) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-col.about p {
+    color: #a0aec0;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.social-links a {
+    display: inline-block;
+    color: #f0f4f8;
+    background: var(--accent);
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.social-links a:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+}
+
+.footer-col.links ul {
+    list-style: none;
+}
+
+.footer-col.links li {
+    margin-bottom: 10px;
+}
+
+.footer-col.links a {
+    color: #a0aec0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col.links a:hover {
+    color: var(--accent);
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.newsletter-form input {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    background-color: #3e4c5e;
+    color: #fff;
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.newsletter-form input::placeholder {
+    color: #a0aec0;
+}
+
+.newsletter-form button {
+    background-color: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: var(--accent-dark);
+}
+
+.contact-detail {
+    color: #a0aec0;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 20px;
+    border-top: 1px solid #3e4c5e;
+    background-color: #111827;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 20px 30px;
+    }
+
+    .footer-col h3 {
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .footer-col h3::after {
+        left: 0;
+    }
+
+    .footer-col.about p {
+        max-width: none;
+    }
+
+    .newsletter-form {
+        display: block;
+    }
+
+    .newsletter-form input,
+    .newsletter-form button {
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+}
+</style>
 
 <script>
 const records=[

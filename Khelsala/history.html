@@ -1,101 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nepali Cricket Timeline</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    margin: 0;
-    padding: 0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nepali Cricket Timeline</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --accent: #dc2626;
+  --accent-dark: #b91c1c;
+  --bg: #f0f4f8;
+  --card: #fff;
+  --card-hover: #f9fafb;
+  --text: #111;
+  --text-muted: #566;
+  --border: rgba(86,102,118,0.2);
+  --maxw: 1200px;
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.title {
-    text-align: center;
-    padding: 20px;
-    background: #d32f2f;
-    color: white;
-    margin: 0;
-}
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;scroll-behavior:smooth;}
+body{line-height:1.6;}
 
-.timeline {
-    width: 90%;
-    max-width: 900px;
-    margin: 20px auto;
+/* Navigation */
+.nav-bar {
+  display:flex;justify-content:space-between;align-items:center;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  padding:15px 40px;box-shadow:0 4px 20px rgba(0,0,0,0.05);
+  position: sticky; top:0; z-index:1000;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
 }
+.nav-bar.scrolled{background:rgba(255,255,255,1);box-shadow:0 6px 25px rgba(0,0,0,0.1);}
+.logo-text {
+  font-size:28px;font-weight:700;
+  background: linear-gradient(270deg, var(--accent), var(--accent-dark), #111);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnim 6s ease infinite;
+}
+.nav-links {display:flex; gap:30px; list-style:none;}
+.nav-links li a {text-decoration:none;color:var(--text);font-weight:500;position:relative;transition:all 0.3s;}
+.nav-links li a::after {content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--accent);transition:width 0.3s;}
+.nav-links li a:hover::after{width:100%;color:var(--accent);}
+.hamburger{display:none;font-size:28px;cursor:pointer;}
 
-.card {
-    background: white;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
+/* Hero */
+.hero{position:relative;width:100%;max-height:60vh;overflow:hidden;border-radius:12px;margin-bottom:50px; max-width: var(--maxw); margin: 50px auto;opacity:0;transform:translateY(30px);transition: all 1s ease;}
+.hero.visible{opacity:1;transform:translateY(0);}
+.hero img{width:100%;height:100%;object-fit:cover;filter:brightness(60%);transition:transform 0.5s ease;}
+.hero img:hover{transform:scale(1.05);}
+.hero-text{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);color:#fff;text-align:center; width: 80%;opacity:0;animation:fadeInUp 1.2s forwards 0.3s;}
+.hero-text h1{font-size:48px;text-shadow:0 2px 10px rgba(0,0,0,0.6);}
+.hero-text p{font-size:20px;text-shadow:0 1px 6px rgba(0,0,0,0.5);}
 
-.card img {
-    width: 120px;
-    height: 90px;
-    border-radius: 10px;
-    object-fit: cover;
+/* Cards Grid */
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  max-width:var(--maxw);
+  margin:0 auto 80px;
+  padding: 0 20px;
 }
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:transform 0.3s ease,box-shadow 0.3s ease,opacity 0.6s;
+  cursor:pointer;
+  opacity:0;
+  transform:translateY(40px);
+}
+.card.visible{opacity:1;transform:translateY(0);}
+.card img{width:100%;height:250px;object-fit:cover;display:block;transition:transform 0.4s ease;}
+.card:hover img{transform:scale(1.05);}
+.card .card-content{padding:20px;}
+.card .year{font-size:22px;font-weight:700;color:var(--accent);margin-bottom:10px;}
+.card .description{font-size:16px;color:var(--text-muted);line-height:1.5;}
+.card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(0,0,0,0.15);}
 
-.year {
-    font-size: 24px;
-    font-weight: bold;
-    color: #d32f2f;
-}
+/* Animations */
+@keyframes fadeInUp{0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
+@keyframes gradientAnim{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
-.description {
-    font-size: 15px;
-}
-    </style>
+/* Footer Styling */
+.site-footer {background-color: #1f2937;color: #f0f4f8;padding: 60px 0 0;font-size: 14px;border-top: 5px solid var(--accent);}
+.footer-container {max-width: var(--maxw);margin: 0 auto;padding: 0 20px 40px;display: grid;grid-template-columns: 2fr 1fr 2fr;gap: 40px;opacity:0;transform:translateY(30px);transition:all 1s ease;}
+.footer-container.visible{opacity:1;transform:translateY(0);}
+.footer-col h3 {font-size: 18px;font-weight: 600;margin-bottom: 25px;color: var(--accent);position: relative;padding-bottom: 8px;}
+.footer-col h3::after {content: '';position: absolute;left: 0;bottom: 0;height: 2px;width: 40px;background-color: var(--accent);}
+.footer-col.about .logo-text {font-size: 32px;font-weight: 700;margin-bottom: 10px;background: linear-gradient(135deg, var(--card) 0%, var(--accent) 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
+.footer-col.about p {color: #a0aec0;margin-bottom: 20px;line-height: 1.6;}
+.social-links a {display: inline-block;color: #f0f4f8;background: var(--accent);width: 30px;height: 30px;line-height: 30px;text-align: center;border-radius: 50%;margin-right: 10px;text-decoration: none;font-size: 12px;font-weight: 700;transition: all 0.3s;}
+.social-links a:hover {background-color: var(--accent-dark);transform: translateY(-3px);}
+.footer-col.links ul {list-style: none;padding-left: 0;}
+.footer-col.links li {margin-bottom: 10px;}
+.footer-col.links a {color: #a0aec0;text-decoration: none;transition:all 0.3s;}
+.footer-col.links a:hover {color: var(--accent);}
+.newsletter-form {display: flex;margin-top: 15px;margin-bottom: 20px;}
+.newsletter-form input {padding: 10px 15px;border: none;border-radius: 8px 0 0 8px;background-color: #3e4c5e;color: #fff;flex-grow: 1;font-size: 14px;}
+.newsletter-form input::placeholder {color: #a0aec0;}
+.newsletter-form button {background-color: var(--accent);color: #fff;border: none;padding: 10px 15px;border-radius: 0 8px 8px 0;cursor: pointer;font-weight: 600;transition:all 0.3s;}
+.newsletter-form button:hover {background-color: var(--accent-dark);}
+.contact-detail {color: #a0aec0;}
+.footer-bottom {text-align: center;padding: 20px 20px;border-top: 1px solid #3e4c5e;background-color: #111827;}
+.footer-bottom p {margin: 0;color: #9ca3af;font-size: 13px;}
+
+/* Responsive */
+@media(max-width:1200px){.cards-grid{grid-template-columns:repeat(2,1fr);}.hero-text h1{font-size:36px;}}
+@media(max-width:768px){.nav-bar{padding:15px 20px;}.nav-links{display:none;}.hamburger{display:block;}.cards-grid{grid-template-columns:1fr;gap:20px;}.hero-text h1{font-size:32px;}.hero-text p{font-size:16px;}.hero{margin-top: 20px;}}
+</style>
 </head>
 <body>
 
-    <h1 class="title">The legecy of cricket in Nepal</h1><P>Tracing the journey of cricket from its roots to modern-day achievements</P>
+<header>
+<nav class="nav-bar">
+  <div class="logo-text"><i class="fa-solid fa-cricket"></i>Khelsala</div>
+  <ul class="nav-links">
+    <li><a href="/FTD.html">Home</a></li>
+    <li><a href="/history.html">History</a></li>
+  </ul>
+</nav>
+</header>
 
-    <div class="timeline" id="timeline"></div>
+<div class="hero">
+  <img src="https://english.onlinekhabar.com/wp-content/uploads/2020/09/Old-Nepali-cricket-team.jpg" alt="Nepali Cricket Legacy">
+  <div class="hero-text">
+    <h1>The Legacy of Cricket in Nepal</h1>
+    <p>Tracing the journey from humble beginnings to international achievements</p>
+  </div>
+</div>
 
-    <script>
-        const timelineData = [
-    { year: "1946", desc: "Birth of cricket in Nepal.", img: "https://via.placeholder.com/200x120?text=1946" },
-    { year: "1988", desc: "Nepal became ICC Affiliate Member.", img: "https://via.placeholder.com/200x120?text=1988" },
-    { year: "1996", desc: "Upgraded to ICC Associate Member.", img: "https://via.placeholder.com/200x120?text=1996" },
-    { year: "1998–2000", desc: "Started participating in ACC tournaments.", img: "https://via.placeholder.com/200x120?text=1998" },
-    { year: "2001–2010", desc: "Rise of youth cricket and U-19 World Cups.", img: "https://via.placeholder.com/200x120?text=2001" },
-    { year: "2006", desc: "Nepal U-19 defeated South Africa U-19.", img: "https://via.placeholder.com/200x120?text=2006" },
-    { year: "2010–2013", desc: "Domestic cricket and coaching improved.", img: "https://via.placeholder.com/200x120?text=2010" },
-    { year: "2014", desc: "Nepal qualified for ICC T20 World Cup.", img: "https://via.placeholder.com/200x120?text=2014" },
-    { year: "2015–2017", desc: "Rise of domestic leagues: EPL, DPL.", img: "https://via.placeholder.com/200x120?text=2015" },
-    { year: "2018", desc: "Nepal gained ODI status & played first ODI.", img: "https://via.placeholder.com/200x120?text=2018" },
-    { year: "2019–2021", desc: "Consistent participation in global events.", img: "https://via.placeholder.com/200x120?text=2019" },
-    { year: "2022", desc: "New talents emerged in national team.", img: "https://via.placeholder.com/200x120?text=2022" },
-    { year: "2023", desc: "Records: Fastest ODI century, T20I records.", img: "https://via.placeholder.com/200x120?text=2023" },
-    { year: "2024–Present", desc: "Nepal continues to grow in world cricket.", img: "https://via.placeholder.com/200x120?text=Now" }
-];
+<div class="cards-grid">
+  <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSt6OhUoCGYvomEEYJYaryD_nKX9SOp-gT2A&s" alt="1964"><div class="card-content"><div class="year">1964</div><div class="description">Nepal Cricket Team in 1964.</div></div></div>
+  <div class="card"><img src="https://republicaimg.nagariknewscdn.com/shared/web/uploads/media/NepalCricketTeam2017.jpg" alt="1988"><div class="card-content"><div class="year">1988</div><div class="description">Nepal became ICC Affiliate Member.</div></div></div>
+  <div class="card"><img src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2017/04/Paras-Khadka-celebrates-scoring-50-runs.jpg" alt="1996"><div class="card-content"><div class="year">1996</div><div class="description">Upgraded to ICC Associate Member.</div></div></div>
+  <div class="card"><img src="https://english.onlinekhabar.com/wp-content/uploads/2019/08/u-19-cricket-nepal.jpg" alt="1998–2000"><div class="card-content"><div class="year">1998–2000</div><div class="description">Started participating in ACC tournaments.</div></div></div>
+  <div class="card"><img src="https://s.ndtvimg.com/images/content/2016/jan/806/nepal-under-19.jpg" alt="2001–2010"><div class="card-content"><div class="year">2001–2010</div><div class="description">Rise of youth cricket and U-19 World Cups.</div></div></div>
+  <div class="card"><img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_w_960,q_50/lsci/db/PICTURES/CMS/120800/120836.jpg" alt="2010–2013"><div class="card-content"><div class="year">2010–2013</div><div class="description">Domestic cricket and coaching improved.</div></div></div>
+  <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShPyAB5Jdx5unqt-c1qOKNQtB8fhisFkUfjQ&s" alt="2014"><div class="card-content"><div class="year">2014</div><div class="description">Nepal qualified for ICC T20 World Cup.</div></div></div>
+  <div class="card"><img src="https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2017/sports/Rajapa-and-Forum-18122017085009.jpg&w=900&height=601" alt="2015–2017"><div class="card-content"><div class="year">2015–2017</div><div class="description">Rise of domestic leagues: EPL, DPL.</div></div></div>
+  <div class="card"><img src="https://english.onlinekhabar.com/wp-content/uploads/2018/03/airee.jpg" alt="2018"><div class="card-content"><div class="year">2018</div><div class="description">Nepal gained ODI status & played first ODI.</div></div></div>
+  <div class="card"><img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_w_1200,q_60/lsci/db/PICTURES/CMS/366600/366628.jpg" alt="2019–2021"><div class="card-content"><div class="year">2019–2021</div><div class="description">Consistent participation in global events.</div></div></div>
+</div>
 
-const timelineContainer = document.getElementById("timeline");
-
-timelineData.forEach(item => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-
-    card.innerHTML = `
-        <img src="${item.img}" alt="${item.year}">
-        <div>
-            <div class="year">${item.year}</div>
-            <div class="description">${item.desc}</div>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col about">
+            <div class="logo-text"><i class="fa-solid fa-cricket"></i>Khelsala</div>
+            <p>Chronicling the triumphs and records that define Nepali Cricket's legacy and its vibrant future.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
-    `;
 
-    timelineContainer.appendChild(card);
+        <div class="footer-col links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Records</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col contact">
+            <h3>Stay Updated</h3>
+            <p>Get the latest news and updates directly in your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="contact-detail">Email: info@khelshala.com</p>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2024 Khelshala. All rights reserved. | Powered by the passion of Nepali Cricket.</p>
+    </div>
+</footer>
+
+<script>
+// Scroll animations
+const hero = document.querySelector('.hero');
+const cards = document.querySelectorAll('.card');
+const footerContainer = document.querySelector('.footer-container');
+const navBar = document.querySelector('.nav-bar');
+
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    // Hero animation
+    if(scrollY > 50) hero.classList.add('visible');
+    else hero.classList.remove('visible');
+
+    // Navbar shadow
+    if(scrollY > 20) navBar.classList.add('scrolled');
+    else navBar.classList.remove('scrolled');
+
+    // Cards animation
+    cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if(cardTop < windowHeight - 100){
+            card.classList.add('visible');
+        }
+    });
+
+    // Footer animation
+    const footerTop = footerContainer.getBoundingClientRect().top;
+    if(footerTop < window.innerHeight - 50){
+        footerContainer.classList.add('visible');
+    }
 });
-    </script>
+</script>
 </body>
 </html>

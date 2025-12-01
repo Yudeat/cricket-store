@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Players - Nepal Cricket History</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        :root {
+            --primary-gold: #FFD700; 
+            --secondary-black: #1A1A1A; 
+            --bg-light: #FAFAFA; 
+            --text-dark: #333333; 
+            --text-light: #ffffff;
+            --card-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: var(--secondary-black); 
+            color: var(--text-light);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold), #fff); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary-gold); 
+        }
+
+        /* --- HEADER --- */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: var(--bg-light); 
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--secondary-black);
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .player-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .player-card {
+            background: var(--text-light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .player-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .player-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: top center; 
+            border-bottom: 4px solid var(--primary-gold);
+            transition: opacity 0.3s;
+        }
+
+        .player-card:hover img {
+             opacity: 0.9;
+        }
+
+        .player-info {
+            padding: 20px 15px;
+        }
+
+        .player-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--secondary-black);
+            margin-bottom: 5px;
+        }
+
+        .player-role {
+            font-size: 0.9rem;
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .player-stat {
+            background: var(--secondary-black);
+            color: var(--text-light);
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--primary-gold);
+            font-weight: 500;
+        }
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            .player-grid {
+                gap: 20px;
+            }
+            .player-card img {
+                height: 250px;
+            }
+        }
+        @media (max-width: 480px) {
+             .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-text">Khelshala</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/FTD.html">Home</a></li>
+            <li><a href="/history.html">History</a></li>
+            <li><a href="#" style="color:var(--primary-gold); border-bottom: 2px solid var(--primary-gold);">Players</a></li>
+            <li><a href="/store.html">Store</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>Nepali Cricket Legends</h1>
+        <p>A tribute to the pioneers and record-breakers who shaped the history and future of the nation's favorite sport.</p>
+    </header>
+
+    <main class="container">
+        <div class="player-grid">
+            
+            <div class="player-card">
+                <img src="https://static.cricbuzz.com/a/img/v1/152x152/i1/c170940/paras-khadka.jpg" alt="Paras Khadka">
+                <div class="player-info">
+                    <h3 class="player-name">Paras Khadka</h3>
+                    <p class="player-role">All-Rounder / Former Captain</p>
+                    <div class="player-stat">
+                        <span class="stat-label">Key Achievement</span>
+                        <span class="stat-value">First ODI Century</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-card">
+                <img src="https://static.cricbuzz.com/a/img/v1/152x152/i1/c170947/dipendra-singh-airee.jpg" alt="Dipendra Singh Airee">
+                <div class="player-info">
+                    <h3 class="player-name">Dipendra Singh Airee</h3>
+                    <p class="player-role">All-Rounder</p>
+                    <div class="player-stat">
+                        <span class="stat-label">Key Achievement</span>
+                        <span class="stat-value">Fastest T20I 50 (9 balls)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-card">
+                <img src="https://static.cricbuzz.com/a/img/v1/152x152/i1/c170942/sandeep-lamichhane.jpg" alt="Sandeep Lamichhane">
+                <div class="player-info">
+                    <h3 class="player-name">Sandeep Lamichhane</h3>
+                    <p class="player-role">Leg Spinner</p>
+                    <div class="player-stat">
+                        <span class="stat-label">Key Achievement</span>
+                        <span class="stat-value">IPL Debutant (2018)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="player-card">
+                <img src="https://static.cricbuzz.com/a/img/v1/152x152/i1/c170944/gyanendra-malla.jpg" alt="Gyanendra Malla">
+                <div class="player-info">
+                    <h3 class="player-name">Gyanendra Malla</h3>
+                    <p class="player-role">Batsman / Former Captain</p>
+                    <div class="player-stat">
+                        <span class="stat-label">Key Achievement</span>
+                        <span class="stat-value">Consistent ODI Performer</span>
+                    </div>
+                </div>
+            </div>
+
+             <div class="player-card">
+                <img src="https://static.cricbuzz.com/a/img/v1/152x152/i1/c170954/kushal-bhurtel.jpg" alt="Kushal Bhurtel">
+                <div class="player-info">
+                    <h3 class="player-name">Kushal Bhurtel</h3>
+                    <p class="player-role">Opening Batsman</p>
+                    <div class="player-stat">
+                        <span class="stat-label">Key Achievement</span>
+                        <span class="stat-value">First T20I Century for Nepal</span>
+                    </div>
+                </div>
+            </div>
+            
+             <div class="player-card">
+                <img src="https://static.cricbuzz.com/a/img/v1/152x152/i1/c170943/rohit-paudel.jpg" alt="Rohit Paudel">
+                <div class="player-info">
+                    <h3 class="player-name">Rohit Paudel</h3>
+                    <p class="player-role">Batsman / Captain</p>
+                    <div class="player-stat">
+                        <span class="stat-label">Key Achievement</span>
+                        <span class="stat-value">Youngest ODI Debutant</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>
