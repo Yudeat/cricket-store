@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #673400;
+    color: white;
+}
+
+/* Navigation */
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px black;
+}
+
+.nav-bar .logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: crimson;
+}
+
+.nav-bar .nav-links {
+    display: flex;
+    gap: 70px;
+    list-style: none;
+}
+
+.nav-bar .nav-links li a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+.nav-bar .nav-links li a:hover {
+    border-bottom: 3px solid black;
+}
+
+/* Main Image Overlay */
+.main-img {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+}
+
+.main-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(90%);
+}
+
+.main-img #overlay-text1,
+.main-img #overlay-text2,
+.main-img #overlay-text3 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+#overlay-text1 {
+    top: 40%;
+    font-size: 50px;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#overlay-text2 {
+    top: 50%;
+    font-size: 20px;
+    color: rgba(255,255,255,0.9);
+    padding: 10px 15px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+#overlay-text3 {
+    top: 60%;
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+#overlay-text3:hover {
+    background-color: rgba(255,255,255,0.3);
+    color: white;
+}
+
+/* Description Sections */
+.description1, .description2 {
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.description1 h2, .description2 h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* Photo Section */
+.photo-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 20px;
+}
+
+.photo-card {
+    width: 350px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: visible;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.photo-card h3 {
+    font-size: 20px;
+    padding: 10px 15px;
+    text-align: center;
+    color: #000;
+    margin: 0;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Recaps Section */
+.recaps {
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.recaps .recaps-container1,
+.recaps .recaps-container2,
+.recaps .recaps-container3 {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.recaps-container1 .image-container,
+.recaps-container2 .image-container,
+.recaps-container3 .image-container {
+    flex: 1 1 400px;
+    overflow: hidden;
+}
+
+.recaps-container1 .image-container img,
+.recaps-container2 .image-container img,
+.recaps-container3 .image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.recaps-container1 .image-container img:hover,
+.recaps-container2 .image-container img:hover,
+.recaps-container3 .image-container img:hover {
+    transform: scale(1.05);
+}
+
+.recaps .recaps-text {
+    flex: 1 1 400px;
+}
+
+.recaps .recaps-text h2 {
+    font-size: 28px;
+    padding-bottom: 10px;
+}
+
+.recaps .recaps-text p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Inquiries / Contact Section */
+.inquiries {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #4b2e00;
+    border-radius: 10px;
+    margin: 50px 20px;
+}
+
+.inquiries h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #00ffff;
+}
+
+.inquiries p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.inquiries .inqury-btn {
+    padding: 12px 25px;
+    background-color: #a39b98;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.inquiries .inqury-btn a {
+    text-decoration: none;
+    color: #000;
+}
+
+.inquiries .inqury-btn:hover {
+    background-color: #57533d;
+    color: #fff;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #2a1500;
+    padding: 50px 20px;
+    color: white;
+}
+
+.footer .paragraph,
+.footer .social-links-list,
+.footer .contact-us,
+.footer .other-sites {
+    flex: 1 1 200px;
+    margin: 20px;
+}
+
+.footer h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #ffd700;
+}
+
+.footer h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer p,
+.footer a {
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer .social-links a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+}
+
+.footer .social-links a:hover {
+    color: #ffd700;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .photo-card {
+        width: 90%;
+    }
+    .recaps .recaps-container1,
+    .recaps .recaps-container2,
+    .recaps .recaps-container3 {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .main-img {
+        height: 500px;
+    }
+    #overlay-text1 {
+        font-size: 32px;
+    }
+    #overlay-text2 {
+        font-size: 16px;
+    }
+    #overlay-text3 {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Nepal Cricket</title>
+<style>
+    fo, .contact-form{
+  flex:1 1 300px;
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.08);
+}
+.contact-form input, .contact-form textarea{
+  width:100%;
+  padding:8px;
+  margin-bottom:12px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+.contact-form button{
+  background:#d32f2f;
+  color:white;
+  padding:8px 16px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:600;
+}
+.map-section{
+  margin-bottom:30px;
+}
+.map-section h2{
+  margin-bottom:12px;
+}
+.map-container iframe{
+  border-radius:10px;
+}
+#formMessage{
+  margin-top:10px;
+  font-weight:600;
+  color:green;
+}
+body{
+  font-family:sans-serif;
+  margin:0;
+  background:#f4f4f9;
+  color:#111;
+}
+header{
+  background:#d32f2f;
+  color:white;
+  padding:12px;
+  text-align:center;
+}
+header nav a{
+  color:white;
+  margin:0 8px;
+  text-decoration:none;
+  font-weight:600;
+}
+main{
+  max-width:900px;
+  margin:20px auto;
+  padding:10px;
+}
+.contact-section{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  margin-bottom:30px;
+}
+.contact-in
+</style>
+
+</head>
+<body>
+
+<header>
+  <h1>Khelshala Cricket Store - Connect with Us</h1>
+  <p>Stay updated with the Latest match highlights and community events by following us on our officials social media platforms join the conversation and be part of the nepal cricket family </p>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="contact-section">
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      <p><strong>Address:</strong> Kathmandu, Nepal</p>
+      <p><strong>Phone:</strong> +977 9749702424</p>
+      <p><strong>Email:</strong> Khelshala@nepalcricket.com</p>
+    </div>
+
+    <div class="contact-form">
+      <h2>Send Us a Message</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="formMessage"></p>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <h2>Our Location</h2>
+    <div class="map-container">
+      <!-- Replace the src with your desired Google Map location -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.835795156666!2d85.32221931504886!3d27.717245932799404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190f0bdb7fb1%3A0x1d2b2f6bb0e37dfc!2sKathmandu%2C%20Nepal!5e0!3m2!1sen!2sus!4v1698765432100!5m2!1sen!2sus"
+        width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+</main>
+
+<script>
+    const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
+
+contactForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  
+  // get form data
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if(name && email && message){
+    // Simulate sending
+    formMessage.textContent = `Thank you ${name}! Your message has been sent.`;
+    contactForm.reset();
+  }else{
+    formMessage.textContent = 'Please fill in all fields.';
+    formMessage.style.color='red';
+  }
+});
+</script>
+</body>
+</html>

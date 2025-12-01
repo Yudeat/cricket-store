@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepali Cricket Timeline</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    text-align: center;
+    padding: 20px;
+    background: #d32f2f;
+    color: white;
+    margin: 0;
+}
+
+.timeline {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.card img {
+    width: 120px;
+    height: 90px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.year {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+.description {
+    font-size: 15px;
+}
+    </style>
+</head>
+<body>
+
+    <h1 class="title">The legecy of cricket in Nepal</h1><P>Tracing the journey of cricket from its roots to modern-day achievements</P>
+
+    <div class="timeline" id="timeline"></div>
+
+    <script>
+        const timelineData = [
+    { year: "1946", desc: "Birth of cricket in Nepal.", img: "https://via.placeholder.com/200x120?text=1946" },
+    { year: "1988", desc: "Nepal became ICC Affiliate Member.", img: "https://via.placeholder.com/200x120?text=1988" },
+    { year: "1996", desc: "Upgraded to ICC Associate Member.", img: "https://via.placeholder.com/200x120?text=1996" },
+    { year: "1998–2000", desc: "Started participating in ACC tournaments.", img: "https://via.placeholder.com/200x120?text=1998" },
+    { year: "2001–2010", desc: "Rise of youth cricket and U-19 World Cups.", img: "https://via.placeholder.com/200x120?text=2001" },
+    { year: "2006", desc: "Nepal U-19 defeated South Africa U-19.", img: "https://via.placeholder.com/200x120?text=2006" },
+    { year: "2010–2013", desc: "Domestic cricket and coaching improved.", img: "https://via.placeholder.com/200x120?text=2010" },
+    { year: "2014", desc: "Nepal qualified for ICC T20 World Cup.", img: "https://via.placeholder.com/200x120?text=2014" },
+    { year: "2015–2017", desc: "Rise of domestic leagues: EPL, DPL.", img: "https://via.placeholder.com/200x120?text=2015" },
+    { year: "2018", desc: "Nepal gained ODI status & played first ODI.", img: "https://via.placeholder.com/200x120?text=2018" },
+    { year: "2019–2021", desc: "Consistent participation in global events.", img: "https://via.placeholder.com/200x120?text=2019" },
+    { year: "2022", desc: "New talents emerged in national team.", img: "https://via.placeholder.com/200x120?text=2022" },
+    { year: "2023", desc: "Records: Fastest ODI century, T20I records.", img: "https://via.placeholder.com/200x120?text=2023" },
+    { year: "2024–Present", desc: "Nepal continues to grow in world cricket.", img: "https://via.placeholder.com/200x120?text=Now" }
+];
+
+const timelineContainer = document.getElementById("timeline");
+
+timelineData.forEach(item => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    card.innerHTML = `
+        <img src="${item.img}" alt="${item.year}">
+        <div>
+            <div class="year">${item.year}</div>
+            <div class="description">${item.desc}</div>
+        </div>
+    `;
+
+    timelineContainer.appendChild(card);
+});
+    </script>
+</body>
+</html>
