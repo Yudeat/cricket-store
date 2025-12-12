@@ -174,7 +174,10 @@ body{line-height:1.6;}
         </div>
     </div>
     
-  
+    <div class="footer-bottom">
+        <p>&copy; 2024 Khelshala. All rights reserved. | Powered by the passion of Nepali Cricket.</p>
+    </div>
+</footer>
 
 <script>
 // Scroll animations
@@ -204,7 +207,10 @@ window.addEventListener('scroll', () => {
     });
 
     // Footer animation
-  
+    const footerTop = footerContainer.getBoundingClientRect().top;
+    if(footerTop < window.innerHeight - 50){
+        footerContainer.classList.add('visible');
+    }
 });
 </script>
 </body>
