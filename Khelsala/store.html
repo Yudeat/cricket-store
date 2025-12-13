@@ -241,6 +241,21 @@ priceValue.textContent=`Up to NPR ${priceFilter.value.replace(/\B(?=(\d{3})+(?!\
 filterProducts();
 });
 availabilityFilter.addEventListener('change',filterProducts);
+jQuery(function($){
+  $('.product-card').hover(function(){
+    $(this).find('.add-to-cart-btn').addClass('btn-hover');
+  },function(){
+    $(this).find('.add-to-cart-btn').removeClass('btn-hover');
+  });
+}); 
+lengthMenu.addEventListener('change',()=>{
+  const length=lengthMenu.value;
+  if(length==='all'){
+    renderProducts(products);
+  }else{
+    renderProducts(products.slice(0,length));
+  }
+}); 
 </script>
 </body>
 </html>
